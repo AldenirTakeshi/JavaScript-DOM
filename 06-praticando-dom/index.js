@@ -13,6 +13,7 @@ function addContacts() {
   // appendChild Adiciona apenas 1 por vez!!
   nameLi.appendChild(nameInput);
   ul.appendChild(nameLi);
+  ul.appendChild(document.createElement("br"));
 
   const phoneLi = document.createElement("li");
   phoneLi.innerText = "Telefone:";
@@ -22,17 +23,29 @@ function addContacts() {
 
   phoneLi.appendChild(phoneInput);
   ul.appendChild(phoneLi);
+  ul.appendChild(document.createElement("br"));
 
   const addressLi = document.createElement("li");
-  addressLi.innerText = "Endereço:";
+  addressLi.innerHTML = "<label for='address'>Endereço:</label>";
   const addressInput = document.createElement("input");
   addressInput.type = "text";
-  addressInput.name = "endereço";
+  addressInput.name = "address";
+  addressInput.id = "address";
+  addressInput.placeholder = "Digite seu endereço...";
 
   addressLi.appendChild(addressInput);
   ul.appendChild(addressLi);
+  ul.appendChild(document.createElement("br"));
   //Append adiciona varios de uma vez
   contactSection.append(h3, ul);
 }
 
-function RemoveContacts() {}
+function RemoveContacts() {
+  const contactSection = document.getElementById("contacts-list");
+
+  const title = document.getElementsByTagName("h3");
+  const contacts = document.getElementsByTagName("ul");
+
+  contactSection.removeChild(title[title.length - 1]);
+  contactSection.removeChild(contacts[contacts.length - 1]);
+}
